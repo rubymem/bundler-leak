@@ -31,27 +31,27 @@ describe Bundler::Audit::Advisory do
 
     describe '#id' do
       subject { super().id }
-      it { is_expected.to eq(id)                  }
+      it { is_expected.to eq(id) }
     end
 
     describe '#url' do
       subject { super().url }
-      it { is_expected.to eq(data['url'])         }
+      it { is_expected.to eq(data['url']) }
     end
 
     describe '#title' do
       subject { super().title }
-      it { is_expected.to eq(data['title'])       }
+      it { is_expected.to eq(data['title']) }
     end
 
     describe '#date' do
       subject { super().date }
-      it { is_expected.to eq(data['date'])        }
+      it { is_expected.to eq(data['date']) }
     end
 
     describe '#cvss_v2' do
       subject { super().cvss_v2 }
-      it { is_expected.to eq(data['cvss_v2'])     }
+      it { is_expected.to eq(data['cvss_v2']) }
     end
 
     describe '#description' do
