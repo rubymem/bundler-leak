@@ -9,7 +9,7 @@ describe Bundler::Audit::CLI do
         before { expect(Bundler::Audit::Database).to receive(:update!).and_return(true) }
 
         it "prints updated message" do
-          expect { subject.update }.to output(/Updated ruby-advisory-db/).to_stdout
+          expect { subject.update }.to output(/Updated ruby-mem-advisory-db/).to_stdout
         end
 
         it "prints total advisory count" do
@@ -17,7 +17,7 @@ describe Bundler::Audit::CLI do
           expect(database).to receive(:size).and_return(1234)
           expect(Bundler::Audit::Database).to receive(:new).and_return(database)
 
-          expect { subject.update }.to output(/ruby-advisory-db: 1234 advisories/).to_stdout
+          expect { subject.update }.to output(/ruby-mem-advisory-db: 1234 advisories/).to_stdout
         end
       end
 
@@ -31,7 +31,7 @@ describe Bundler::Audit::CLI do
               subject.update
             rescue SystemExit
             end
-          end.to output(/Failed updating ruby-advisory-db!/).to_stdout
+          end.to output(/Failed updating ruby-mem-advisory-db!/).to_stdout
         end
 
         it "exits with error status code" do
@@ -80,7 +80,7 @@ describe Bundler::Audit::CLI do
               subject.update
             rescue SystemExit
             end
-          end.to output(/Failed updating ruby-advisory-db!/).to_stdout
+          end.to output(/Failed updating ruby-mem-advisory-db!/).to_stdout
         end
 
         it "exits with error status code" do

@@ -82,15 +82,15 @@ Audit a project's `Gemfile.lock`:
 
     Unpatched versions found!
 
-Update the [ruby-advisory-db] that `bundle audit` uses:
+Update the [ruby-mem-advisory-db] that `bundle audit` uses:
 
     $ bundle audit update
-    Updating ruby-advisory-db ...
+    Updating ruby-mem-advisory-db ...
     remote: Counting objects: 44, done.
     remote: Compressing objects: 100% (24/24), done.
     remote: Total 39 (delta 19), reused 29 (delta 10)
     Unpacking objects: 100% (39/39), done.
-    From https://github.com/rubysec/ruby-advisory-db
+    From https://github.com/rubysec/ruby-mem-advisory-db
      * branch            master     -> FETCH_HEAD
     Updating 5f8225e..328ca86
     Fast-forward
@@ -106,9 +106,9 @@ Update the [ruby-advisory-db] that `bundle audit` uses:
      create mode 100644 gems/fog-dragonfly/OSVDB-96798.yml
      create mode 100644 gems/sounder/OSVDB-96278.yml
      create mode 100644 gems/wicked/OSVDB-98270.yml
-    ruby-advisory-db: 64 advisories
+    ruby-mem-advisory-db: 64 advisories
 
-Update the [ruby-advisory-db] and check `Gemfile.lock` (useful for CI runs):
+Update the [ruby-mem-advisory-db] and check `Gemfile.lock` (useful for CI runs):
 
     $ bundle audit check --update
 
@@ -165,4 +165,4 @@ along with bundler-audit.  If not, see <http://www.gnu.org/licenses/>.
 [bundler]: https://github.com/carlhuda/bundler#readme
 
 [OSVDB]: http://osvdb.org/
-[ruby-advisory-db]: https://github.com/rubysec/ruby-advisory-db
+[ruby-mem-advisory-db]: https://github.com/rubysec/ruby-mem-advisory-db

@@ -15,21 +15,21 @@ require 'rubygems/tasks'
 Gem::Tasks.new
 
 namespace :db do
-  desc 'Updates data/ruby-advisory-db'
+  desc 'Updates data/ruby-mem-advisory-db'
   task :update do
     timestamp = nil
 
-    chdir 'data/ruby-advisory-db' do
+    chdir 'data/ruby-mem-advisory-db' do
       sh 'git', 'pull', 'origin', 'master'
 
-      File.open('../ruby-advisory-db.ts','w') do |file|
+      File.open('../ruby-mem-advisory-db.ts','w') do |file|
         file.write Time.parse(`git log --pretty="%cd" -1`).utc
       end
     end
 
-    sh 'git', 'commit', 'data/ruby-advisory-db',
-                        'data/ruby-advisory-db.ts',
-                        '-m', 'Updated ruby-advisory-db'
+    sh 'git', 'commit', 'data/ruby-mem-advisory-db',
+                        'data/ruby-mem-advisory-db.ts',
+                        '-m', 'Updated ruby-mem-advisory-db'
   end
 end
 

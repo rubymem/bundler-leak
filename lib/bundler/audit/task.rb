@@ -17,7 +17,7 @@ module Bundler
       #
       def define
         namespace :bundle do
-          desc 'Updates the ruby-advisory-db then runs bundle-audit'
+          desc 'Updates the ruby-mem-advisory-db then runs bundle-leak'
           task :audit do
             require 'bundler/audit/cli'
             %w(update check).each do |command|

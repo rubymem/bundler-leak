@@ -60,24 +60,24 @@ module Bundler
         end
       end
 
-      desc 'update', 'Updates the ruby-advisory-db'
+      desc 'update', 'Updates the ruby-mem-advisory-db'
       method_option :quiet, :type => :boolean, :aliases => '-q'
 
       def update
-        say("Updating ruby-advisory-db ...") unless options.quiet?
+        say("Updating ruby-mem-advisory-db ...") unless options.quiet?
 
         case Database.update!(quiet: options.quiet?)
         when true
-          say("Updated ruby-advisory-db", :green) unless options.quiet?
+          say("Updated ruby-mem-advisory-db", :green) unless options.quiet?
         when false
-          say "Failed updating ruby-advisory-db!", :red
+          say "Failed updating ruby-mem-advisory-db!", :red
           exit 1
         when nil
           say "Skipping update", :yellow
         end
 
         unless options.quiet?
-          puts("ruby-advisory-db: #{Database.new.size} advisories")
+          puts("ruby-mem-advisory-db: #{Database.new.size} advisories")
         end
       end
 

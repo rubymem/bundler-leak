@@ -28,17 +28,17 @@ module Bundler
     #
     class Database
 
-      # Git URL of the ruby-advisory-db
-      URL = 'https://github.com/rubysec/ruby-advisory-db.git'
+      # Git URL of the ruby-mem-advisory-db
+      URL = 'https://github.com/rubymem/ruby-mem-advisory-db.git'
 
-      # Default path to the ruby-advisory-db
-      VENDORED_PATH =  File.expand_path(File.join(File.dirname(__FILE__),'..','..','..','data','ruby-advisory-db'))
+      # Default path to the ruby-mem-advisory-db
+      VENDORED_PATH =  File.expand_path(File.join(File.dirname(__FILE__),'..','..','..','data','ruby-mem-advisory-db'))
 
       # Timestamp for when the database was last updated
       VENDORED_TIMESTAMP = Time.parse(File.read("#{VENDORED_PATH}.ts")).utc
 
-      # Path to the user's copy of the ruby-advisory-db
-      USER_PATH = File.expand_path(File.join(ENV['HOME'],'.local','share','ruby-advisory-db'))
+      # Path to the user's copy of the ruby-mem-advisory-db
+      USER_PATH = File.expand_path(File.join(ENV['HOME'],'.local','share','ruby-mem-advisory-db'))
 
       # The path to the advisory database
       attr_reader :path
@@ -80,7 +80,7 @@ module Bundler
       end
 
       #
-      # Updates the ruby-advisory-db.
+      # Updates the ruby-mem-advisory-db.
       #
       # @param [Boolean, quiet]
       #   Specify whether `git` should be `--quiet`.
