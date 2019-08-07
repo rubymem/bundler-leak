@@ -11,3 +11,5 @@ group :development do
   gem 'yard',           '~> 0.9'
   gem 'simplecov',      '~> 0.7', :require => false
 end
+
+gem "byebug", "~> 11.0", :groups => [:development, :test]
