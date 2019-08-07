@@ -148,6 +148,8 @@ module Bundler
 
         @lockfile.specs.each do |gem|
           @database.check_gem(gem) do |advisory|
+
+            # TODO this logic should be modified for rubymem
             unless (ignore.include?(advisory.cve_id) ||
                     ignore.include?(advisory.osvdb_id))
               yield UnpatchedGem.new(gem,advisory)
