@@ -1,11 +1,11 @@
-# bundler-audit
+# bundler-leak
 
-* [Homepage](https://github.com/rubysec/bundler-audit#readme)
-* [Issues](https://github.com/rubysec/bundler-audit/issues)
-* [Documentation](http://rubydoc.info/gems/bundler-audit/frames)
+* [Homepage](https://github.com/rubysec/bundler-leak#readme)
+* [Issues](https://github.com/rubysec/bundler-leak/issues)
+* [Documentation](http://rubydoc.info/gems/bundler-leak/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
-* [![Build Status](https://travis-ci.org/rubysec/bundler-audit.svg)](https://travis-ci.org/rubysec/bundler-audit)
-* [![Code Climate](https://codeclimate.com/github/rubysec/bundler-audit.svg)](https://codeclimate.com/github/rubysec/bundler-audit)
+* [![Build Status](https://travis-ci.org/rubysec/bundler-leak.svg)](https://travis-ci.org/rubysec/bundler-leak)
+* [![Code Climate](https://codeclimate.com/github/rubysec/bundler-leak.svg)](https://codeclimate.com/github/rubysec/bundler-leak)
 
 ## Description
 
@@ -134,7 +134,7 @@ task default: 'bundle:audit'
 
 ## Install
 
-    $ gem install bundler-audit
+    $ gem install bundler-leak
 
 ## Contributing
 
@@ -146,18 +146,18 @@ task default: 'bundle:audit'
 
 Copyright (c) 2013-2016 Hal Brodigan (postmodern.mod3 at gmail.com)
 
-bundler-audit is free software: you can redistribute it and/or modify
+bundler-leak is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-bundler-audit is distributed in the hope that it will be useful,
+bundler-leak is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with bundler-audit.  If not, see <http://www.gnu.org/licenses/>.
+along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 
 [ruby]: https://ruby-lang.org
 [rubygems]: https://rubygems.org
