@@ -25,9 +25,6 @@ module Bundler
                                 :title,
                                 :date,
                                 :description,
-                                :cvss_v2,
-                                :cve,
-                                :osvdb,
                                 :unaffected_versions,
                                 :patched_versions)
 
@@ -62,44 +59,9 @@ module Bundler
           data['title'],
           data['date'],
           data['description'],
-          data['cvss_v2'],
-          data['cve'],
-          data['osvdb'],
           parse_versions[data['unaffected_versions']],
           parse_versions[data['patched_versions']]
         )
-      end
-
-      #
-      # The CVE identifier.
-      #
-      # @return [String, nil]
-      #
-      def cve_id
-        "CVE-#{cve}" if cve
-      end
-
-      #
-      # The OSVDB identifier.
-      #
-      # @return [String, nil]
-      #
-      def osvdb_id
-        "OSVDB-#{osvdb}" if osvdb
-      end
-
-      #
-      # Determines how critical the vulnerability is.
-      #
-      # @return [:low, :medium, :high]
-      #   The criticality of the vulnerability based on the CVSSv2 score.
-      #
-      def criticality
-        case cvss_v2
-        when 0.0..3.3  then :low
-        when 3.3..6.6  then :medium
-        when 6.6..10.0 then :high
-        end
       end
 
       #
