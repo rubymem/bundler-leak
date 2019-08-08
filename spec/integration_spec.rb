@@ -9,7 +9,7 @@ describe "CLI" do
 
   context "when auditing a bundle with unpatched gems" do
     let(:bundle)    { 'unpatched_gems' }
-    let(:directory) { File.join('spec','bundle',bundle) }
+    let(:directory) { File.join('spec','bundle', bundle) }
 
     subject do
       Dir.chdir(directory) { sh(command, :fail => true) }
@@ -22,11 +22,10 @@ describe "CLI" do
     it "should print advisory information for the vulnerable gems" do
       advisory_pattern = /(Name: [^\n]+
 Version: \d+.\d+.\d+
-Advisory: CVE-[0-9]{4}-[0-9]{4}
-Criticality: (High|Medium)
-URL: http:\/\/(direct|www\.)?osvdb.org\/show\/osvdb\/\d+
+Criticality: (High|Medium|Unknown)
+URL: https?:\/\/(www\.)?.+
 Title: [^\n]*?
-Solution: upgrade to ((~>|=>) \d+.\d+.\d+, )*(~>|=>) \d+.\d+.\d+[\s\n]*?)+/
+Solution: remove or disable this gem until a patch is available!)+/
 
       expect(subject).to match(advisory_pattern)
       expect(subject).to include("Vulnerabilities found!")
@@ -46,6 +45,7 @@ Solution: upgrade to ((~>|=>) \d+.\d+.\d+, )*(~>|=>) \d+.\d+.\d+[\s\n]*?)+/
     end
 
     it "should not print advisory information for ignored gem" do
+      # TODO we don't use OSVDB ids in rubymem, modify this expectation according to rubymem
       expect(subject).not_to include("OSVDB-89026")
     end
   end
@@ -94,7 +94,7 @@ Insecure Source URI found: http://rubygems.org/
         expect(subject).not_to include("Fail")
         expect(subject).to include("Updating ruby-mem-advisory-db ...\n")
         expect(subject).to include("Updated ruby-mem-advisory-db\n")
-        expect(subject.lines.to_a.last).to match(/ruby-mem-advisory-db: [1-9]\d+ advisories/)
+        expect(subject.lines.to_a.last).to match(/ruby-mem-advisory-db: \d+ advisories/)
       end
     end
 
