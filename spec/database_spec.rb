@@ -82,13 +82,13 @@ describe Bundler::Audit::Database do
   describe "#check_gem" do
     let(:gem) do
       Gem::Specification.new do |s|
-        s.name    = 'actionpack'
-        s.version = '3.1.9'
+        s.name    = 'celluloid'
+        s.version = '0.16.1'
       end
     end
 
     context "when given a block" do
-      it "should yield every advisory effecting the gem" do
+      it "should yield every advisory affecting the gem" do
         advisories = []
 
         subject.check_gem(gem) do |advisory|
