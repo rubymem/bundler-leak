@@ -106,14 +106,6 @@ module Bundler
         say "Version: ", :red
         say gem.version
 
-        say "Advisory: ", :red
-
-        if advisory.cve
-          say "CVE-#{advisory.cve}"
-        elsif advisory.osvdb
-          say advisory.osvdb
-        end
-
         say "Criticality: ", :red
         case advisory.criticality
         when :low    then say "Low"
