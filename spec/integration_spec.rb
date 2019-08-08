@@ -22,7 +22,6 @@ describe "CLI" do
     it "should print advisory information for the vulnerable gems" do
       advisory_pattern = /(Name: [^\n]+
 Version: \d+.\d+.\d+
-Criticality: (High|Medium|Unknown)
 URL: https?:\/\/(www\.)?.+
 Title: [^\n]*?
 Solution: remove or disable this gem until a patch is available!)+/
