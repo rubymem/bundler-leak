@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'bundler/audit/database'
-require 'bundler/audit/advisory'
+require 'bundler/plumber/database'
+require 'bundler/plumber/advisory'
 
 describe Bundler::Plumber::Advisory do
   let(:root) { Bundler::Plumber::Database::VENDORED_PATH }

@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
                   lib_dir = File.join(File.dirname(__FILE__),'lib')
                   $LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
 
-                  require 'bundler/audit/version'
+                  require 'bundler/plumber/version'
                   Bundler::Plumber::VERSION
                 end
 

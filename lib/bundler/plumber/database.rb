@@ -15,7 +15,7 @@
 # along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'bundler/audit/advisory'
+require 'bundler/plumber/advisory'
 
 require 'time'
 require 'yaml'

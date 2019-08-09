@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'bundler/audit/cli'
+require 'bundler/plumber/cli'
 
 describe Bundler::Plumber::CLI do
   describe "#update" do

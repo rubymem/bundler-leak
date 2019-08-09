@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'bundler/audit/database'
+require 'bundler/plumber/database'
 require 'tmpdir'
 
 describe Bundler::Plumber::Database do

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'bundler/audit'
+require 'bundler/plumber'
 
 describe Bundler::Plumber do
   it "should have a VERSION constant" do

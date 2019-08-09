@@ -15,8 +15,8 @@
 # along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'bundler/audit/scanner'
-require 'bundler/audit/version'
+require 'bundler/plumber/scanner'
+require 'bundler/plumber/version'
 
 require 'thor'
 require 'bundler'

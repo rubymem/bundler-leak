@@ -1,5 +1,5 @@
 require 'bundler'
-require 'bundler/audit/database'
+require 'bundler/plumber/database'
 require 'bundler/lockfile_parser'
 
 require 'ipaddr'

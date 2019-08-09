@@ -2,8 +2,8 @@ require 'simplecov'
 SimpleCov.start
 
 require 'rspec'
-require 'bundler/audit/version'
-require 'bundler/audit/database'
+require 'bundler/plumber/version'
+require 'bundler/plumber/database'
 
 module Helpers
   def sh(command, options={})
