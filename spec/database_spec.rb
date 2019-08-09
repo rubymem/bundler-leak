@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'bundler/audit/database'
 require 'tmpdir'
 
-describe Bundler::Audit::Database do
+describe Bundler::Plumber::Database do
   let(:vendored_advisories) do
-    Dir[File.join(Bundler::Audit::Database::VENDORED_PATH, 'gems/*/*.yml')].sort
+    Dir[File.join(Bundler::Plumber::Database::VENDORED_PATH, 'gems/*/*.yml')].sort
   end
 
   describe "path" do
@@ -15,38 +15,38 @@ describe Bundler::Audit::Database do
     end
 
     it "should prefer the user repo, iff it's as up to date, or more up to date than the vendored one" do
-      Bundler::Audit::Database.update!(quiet: false)
+      Bundler::Plumber::Database.update!(quiet: false)
 
-      Dir.chdir(Bundler::Audit::Database::USER_PATH) do
+      Dir.chdir(Bundler::Plumber::Database::USER_PATH) do
         puts "Timestamp:"
         system 'git log --pretty="%cd" -1'
       end
 
       # As up to date...
-      expect(Bundler::Audit::Database.path).to eq mocked_user_path
+      expect(Bundler::Plumber::Database.path).to eq mocked_user_path
 
       # More up to date...
       fake_a_commit_in_the_user_repo
-      expect(Bundler::Audit::Database.path).to eq mocked_user_path
+      expect(Bundler::Plumber::Database.path).to eq mocked_user_path
 
       roll_user_repo_back(20)
-      expect(Bundler::Audit::Database.path).to eq Bundler::Audit::Database::VENDORED_PATH
+      expect(Bundler::Plumber::Database.path).to eq Bundler::Plumber::Database::VENDORED_PATH
     end
   end
 
   describe "update!" do
     it "should create the USER_PATH path as needed" do
-      Bundler::Audit::Database.update!(quiet: false)
+      Bundler::Plumber::Database.update!(quiet: false)
       expect(File.directory?(mocked_user_path)).to be true
     end
 
     it "should create the repo, then update it given multple successive calls." do
       expect_update_to_clone_repo!
-      Bundler::Audit::Database.update!(quiet: false)
+      Bundler::Plumber::Database.update!(quiet: false)
       expect(File.directory?(mocked_user_path)).to be true
 
       expect_update_to_update_repo!
-      Bundler::Audit::Database.update!(quiet: false)
+      Bundler::Plumber::Database.update!(quiet: false)
       expect(File.directory?(mocked_user_path)).to be true
     end
   end
@@ -97,7 +97,7 @@ describe Bundler::Audit::Database do
 
         expect(advisories).not_to be_empty
         expect(advisories.all? { |advisory|
-          advisory.kind_of?(Bundler::Audit::Advisory)
+          advisory.kind_of?(Bundler::Plumber::Advisory)
         }).to be_truthy
       end
     end
@@ -115,7 +115,7 @@ describe Bundler::Audit::Database do
 
   describe "#advisories" do
     it "should return a list of all advisories." do
-      actual_advisories = Bundler::Audit::Database.new.
+      actual_advisories = Bundler::Plumber::Database.new.
         advisories.
         map(&:path).
         sort
@@ -132,7 +132,7 @@ describe Bundler::Audit::Database do
 
   describe "#inspect" do
     it "should produce a Ruby-ish instance descriptor" do
-      expect(Bundler::Audit::Database.new.inspect).to eq("#<Bundler::Audit::Database:#{Bundler::Audit::Database::VENDORED_PATH}>")
+      expect(Bundler::Plumber::Database.new.inspect).to eq("#<Bundler::Plumber::Database:#{Bundler::Plumber::Database::VENDORED_PATH}>")
     end
   end
 end

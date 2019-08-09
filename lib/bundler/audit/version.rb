@@ -16,7 +16,7 @@
 #
 
 module Bundler
-  module Audit
+  module Plumber
     # bundler-leak version
     VERSION = '0.6.0'
   end

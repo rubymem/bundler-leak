@@ -18,7 +18,7 @@
 require 'yaml'
 
 module Bundler
-  module Audit
+  module Plumber
     class Advisory < Struct.new(:path,
                                 :id,
                                 :url,

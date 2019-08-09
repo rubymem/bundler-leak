@@ -21,7 +21,7 @@ require 'time'
 require 'yaml'
 
 module Bundler
-  module Audit
+  module Plumber
     #
     # Represents the directory of advisories, grouped by gem name
     # and CVE number.

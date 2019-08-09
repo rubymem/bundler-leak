@@ -23,7 +23,7 @@ require 'bundler'
 require 'bundler/vendored_thor'
 
 module Bundler
-  module Audit
+  module Plumber
     class CLI < ::Thor
 
       default_task :check

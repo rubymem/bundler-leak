@@ -8,7 +8,7 @@ require 'set'
 require 'uri'
 
 module Bundler
-  module Audit
+  module Plumber
     class Scanner
 
       # Represents a gem that is covered by an Advisory

@@ -23,14 +23,14 @@ module Helpers
   end
 
   def expect_update_to_clone_repo!
-    expect(Bundler::Audit::Database).
+    expect(Bundler::Plumber::Database).
       to receive(:system).
-      with('git', 'clone', Bundler::Audit::Database::VENDORED_PATH, mocked_user_path).
+      with('git', 'clone', Bundler::Plumber::Database::VENDORED_PATH, mocked_user_path).
       and_call_original
   end
 
   def expect_update_to_update_repo!
-    expect(Bundler::Audit::Database).
+    expect(Bundler::Plumber::Database).
       to receive(:system).
       with('git', 'pull', 'origin', 'master').
       and_call_original
@@ -49,14 +49,14 @@ module Helpers
   end
 end
 
-include Bundler::Audit
+include Bundler::Plumber
 
 RSpec.configure do |config|
   include Helpers
 
   config.before(:each) do
-    stub_const("Bundler::Audit::Database::URL", Bundler::Audit::Database::VENDORED_PATH)
-    stub_const("Bundler::Audit::Database::USER_PATH", mocked_user_path)
+    stub_const("Bundler::Plumber::Database::URL", Bundler::Plumber::Database::VENDORED_PATH)
+    stub_const("Bundler::Plumber::Database::USER_PATH", mocked_user_path)
     FileUtils.rm_rf(mocked_user_path) if File.exist?(mocked_user_path)
   end
 end

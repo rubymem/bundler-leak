@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
                   $LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
 
                   require 'bundler/audit/version'
-                  Bundler::Audit::VERSION
+                  Bundler::Plumber::VERSION
                 end
 
   gem.summary     = gemspec['summary']

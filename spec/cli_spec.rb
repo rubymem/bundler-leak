@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'bundler/audit/cli'
 
-describe Bundler::Audit::CLI do
+describe Bundler::Plumber::CLI do
   describe "#update" do
     context "not --quiet (the default)" do
       context "when update succeeds" do
 
-        before { expect(Bundler::Audit::Database).to receive(:update!).and_return(true) }
+        before { expect(Bundler::Plumber::Database).to receive(:update!).and_return(true) }
 
         it "prints updated message" do
           expect { subject.update }.to output(/Updated ruby-mem-advisory-db/).to_stdout
@@ -15,7 +15,7 @@ describe Bundler::Audit::CLI do
         it "prints total advisory count" do
           database = double
           expect(database).to receive(:size).and_return(1234)
-          expect(Bundler::Audit::Database).to receive(:new).and_return(database)
+          expect(Bundler::Plumber::Database).to receive(:new).and_return(database)
 
           expect { subject.update }.to output(/ruby-mem-advisory-db: 1234 advisories/).to_stdout
         end
@@ -23,7 +23,7 @@ describe Bundler::Audit::CLI do
 
       context "when update fails" do
 
-        before { expect(Bundler::Audit::Database).to receive(:update!).and_return(false) }
+        before { expect(Bundler::Plumber::Database).to receive(:update!).and_return(false) }
 
         it "prints failure message" do
           expect do
@@ -56,7 +56,7 @@ describe Bundler::Audit::CLI do
       context "when update succeeds" do
 
         before do
-          expect(Bundler::Audit::Database).to(
+          expect(Bundler::Plumber::Database).to(
             receive(:update!).with(quiet: true).and_return(true)
           )
         end
@@ -69,7 +69,7 @@ describe Bundler::Audit::CLI do
       context "when update fails" do
 
         before do
-          expect(Bundler::Audit::Database).to(
+          expect(Bundler::Plumber::Database).to(
             receive(:update!).with(quiet: true).and_return(false)
           )
         end
