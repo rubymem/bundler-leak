@@ -49,22 +49,6 @@ Solution: remove or disable this gem until a patch is available!)+/
     end
   end
 
-  context "when auditing a bundle with insecure sources" do
-    let(:bundle)    { 'insecure_sources' }
-    let(:directory) { File.join('spec','bundle',bundle) }
-
-    subject do
-      Dir.chdir(directory) { sh(command, :fail => true) }
-    end
-
-    it "should print warnings about insecure sources" do
-      expect(subject).to include(%{
-Insecure Source URI found: git://github.com/rails/jquery-rails.git
-Insecure Source URI found: http://rubygems.org/
-      }.strip)
-    end
-  end
-
   context "when auditing a secure bundle" do
     let(:bundle)    { 'secure' }
     let(:directory) { File.join('spec','bundle',bundle) }

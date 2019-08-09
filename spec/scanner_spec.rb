@@ -41,22 +41,9 @@ describe Scanner do
 
       it "should ignore the specified advisories" do
         ids = subject.map { |result| result.advisory.id }
-        
+
         expect(ids).not_to include('OSVDB-89026')
       end
-    end
-  end
-
-  context "when auditing a bundle with insecure sources" do
-    let(:bundle)    { 'insecure_sources' }
-    let(:directory) { File.join('spec','bundle',bundle) }
-    let(:scanner)   { described_class.new(directory)    }
-
-    subject { scanner.scan.to_a }
-
-    it "should match unpatched gems to their advisories" do
-      expect(subject[0].source).to eq('git://github.com/rails/jquery-rails.git')
-      expect(subject[1].source).to eq('http://rubygems.org/')
     end
   end
 
