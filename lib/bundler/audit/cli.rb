@@ -45,8 +45,6 @@ module Bundler
           vulnerable = true
 
           case result
-          when Scanner::InsecureSource
-            print_warning "Insecure Source URI found: #{result.source}"
           when Scanner::UnpatchedGem
             print_advisory result.gem, result.advisory
           end
