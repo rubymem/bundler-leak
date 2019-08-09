@@ -31,24 +31,6 @@ Solution: remove or disable this gem until a patch is available!)+/
     end
   end
 
-  context "when auditing a bundle with ignored gems" do
-    let(:bundle)    { 'unpatched_gems' }
-    let(:directory) { File.join('spec','bundle',bundle) }
-
-    let(:command) do
-      File.expand_path(File.join(File.dirname(__FILE__),'..','bin','bundler-leak -i OSVDB-89026'))
-    end
-
-    subject do
-      Dir.chdir(directory) { sh(command, :fail => true) }
-    end
-
-    it "should not print advisory information for ignored gem" do
-      # TODO we don't use OSVDB ids in rubymem, modify this expectation according to rubymem
-      expect(subject).not_to include("OSVDB-89026")
-    end
-  end
-
   context "when auditing a secure bundle" do
     let(:bundle)    { 'secure' }
     let(:directory) { File.join('spec','bundle',bundle) }
