@@ -13,116 +13,67 @@ Patch-level verification for [bundler].
 
 ## Features
 
-* Checks for vulnerable versions of gems in `Gemfile.lock`.
+* Checks for memory leaks of gems in `Gemfile.lock`.
 * Checks for insecure gem sources (`http://`).
 * Allows ignoring certain advisories that have been manually worked around.
-* Prints advisory information.
+* Prints memory leak information.
 * Does not require a network connection.
 
 ## Synopsis
 
 Audit a project's `Gemfile.lock`:
 
-    $ bundle audit
-    Name: actionpack
-    Version: 3.2.10
-    Advisory: OSVDB-91452
-    Criticality: Medium
-    URL: http://www.osvdb.org/show/osvdb/91452
-    Title: XSS vulnerability in sanitize_css in Action Pack
-    Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
+```shell
+    $ bundle leak
 
-    Name: actionpack
-    Version: 3.2.10
-    Advisory: OSVDB-91454
-    Criticality: Medium
-    URL: http://osvdb.org/show/osvdb/91454
-    Title: XSS Vulnerability in the `sanitize` helper of Ruby on Rails
-    Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
+    Name: celluloid
+    Version: 0.17.0
+    URL: https://github.com/celluloid/celluloid/issues/670
+    Title: Memory Leak using Celluloid::Future
+    Solution: remove or disable this gem until a patch is available!
 
-    Name: actionpack
-    Version: 3.2.10
-    Advisory: OSVDB-89026
-    Criticality: High
-    URL: http://osvdb.org/show/osvdb/89026
-    Title: Ruby on Rails params_parser.rb Action Pack Type Casting Parameter Parsing Remote Code Execution
-    Solution: upgrade to ~> 2.3.15, ~> 3.0.19, ~> 3.1.10, >= 3.2.11
-
-    Name: activerecord
-    Version: 3.2.10
-    Advisory: OSVDB-91453
-    Criticality: High
-    URL: http://osvdb.org/show/osvdb/91453
-    Title: Symbol DoS vulnerability in Active Record
-    Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
-
-    Name: activerecord
-    Version: 3.2.10
-    Advisory: OSVDB-90072
-    Criticality: Medium
-    URL: http://direct.osvdb.org/show/osvdb/90072
-    Title: Ruby on Rails Active Record attr_protected Method Bypass
-    Solution: upgrade to ~> 2.3.17, ~> 3.1.11, >= 3.2.12
-
-    Name: activerecord
-    Version: 3.2.10
-    Advisory: OSVDB-89025
-    Criticality: High
-    URL: http://osvdb.org/show/osvdb/89025
-    Title: Ruby on Rails Active Record JSON Parameter Parsing Query Bypass
-    Solution: upgrade to ~> 2.3.16, ~> 3.0.19, ~> 3.1.10, >= 3.2.11
-
-    Name: activesupport
-    Version: 3.2.10
-    Advisory: OSVDB-91451
-    Criticality: High
-    URL: http://www.osvdb.org/show/osvdb/91451
-    Title: XML Parsing Vulnerability affecting JRuby users
-    Solution: upgrade to ~> 3.1.12, >= 3.2.13
+    Name: therubyracer
+    Version: 0.12.1
+    URL: https://github.com/cowboyd/therubyracer/pull/336
+    Title: Memory leak in WeakValueMap
+    Solution: upgrade to ~> 0.12.3
 
     Unpatched versions found!
+```
 
-Update the [ruby-mem-advisory-db] that `bundle audit` uses:
+Update the [ruby-mem-advisory-db] that `bundle leak` uses:
 
-    $ bundle audit update
-    Updating ruby-mem-advisory-db ...
-    remote: Counting objects: 44, done.
-    remote: Compressing objects: 100% (24/24), done.
-    remote: Total 39 (delta 19), reused 29 (delta 10)
-    Unpacking objects: 100% (39/39), done.
-    From https://github.com/rubysec/ruby-mem-advisory-db
+```shell
+    $ bundle leak update
+
+    cd data/ruby-mem-advisory-db
+    git pull origin master
+    remote: Enumerating objects: 14, done.
+    remote: Counting objects: 100% (14/14), done.
+    remote: Compressing objects: 100% (4/4), done.
+    remote: Total 9 (delta 5), reused 7 (delta 4), pack-reused 0
+    Unpacking objects: 100% (9/9), done.
+    From github.com:rubymem/ruby-mem-advisory-db
      * branch            master     -> FETCH_HEAD
-    Updating 5f8225e..328ca86
+       3254525..c4fc78e  master     -> origin/master
+    Updating 3254525..c4fc78e
     Fast-forward
-     CONTRIBUTORS.md                    |  1 +
-     gems/actionmailer/OSVDB-98629.yml  | 17 +++++++++++++++++
-     gems/cocaine/OSVDB-98835.yml       | 15 +++++++++++++++
-     gems/fog-dragonfly/OSVDB-96798.yml | 13 +++++++++++++
-     gems/sounder/OSVDB-96278.yml       | 13 +++++++++++++
-     gems/wicked/OSVDB-98270.yml        | 14 ++++++++++++++
-     6 files changed, 73 insertions(+)
-     create mode 100644 gems/actionmailer/OSVDB-98629.yml
-     create mode 100644 gems/cocaine/OSVDB-98835.yml
-     create mode 100644 gems/fog-dragonfly/OSVDB-96798.yml
-     create mode 100644 gems/sounder/OSVDB-96278.yml
-     create mode 100644 gems/wicked/OSVDB-98270.yml
-    ruby-mem-advisory-db: 64 advisories
+     README.md                 | 68 ++++++++++++++++++++------------------------------------------------
+     gems/therubyracer/336.yml |  4 ++++
+     2 files changed, 24 insertions(+), 48 deletions(-)
+```
 
 Update the [ruby-mem-advisory-db] and check `Gemfile.lock` (useful for CI runs):
 
-    $ bundle audit check --update
-
-Ignore specific advisories:
-
-    $ bundle audit check --ignore OSVDB-108664
+    $ bundle leak check --update
 
 Rake task:
 
 ```ruby
-require 'bundler/audit/task'
-Bundler::Audit::Task.new
+require 'bundler/leak/task'
+Bundler::Leak::Task.new
 
-task default: 'bundle:audit'
+task default: 'bundle:leak'
 ```
 
 ## Requirements
@@ -164,5 +115,4 @@ along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 [thor]: http://whatisthor.com/
 [bundler]: https://github.com/carlhuda/bundler#readme
 
-[OSVDB]: http://osvdb.org/
-[ruby-mem-advisory-db]: https://github.com/rubysec/ruby-mem-advisory-db
+[ruby-mem-advisory-db]: https://github.com/rubymem/ruby-mem-advisory-db
