@@ -1,11 +1,11 @@
 # bundler-leak
 
-* [Homepage](https://github.com/rubysec/bundler-leak#readme)
-* [Issues](https://github.com/rubysec/bundler-leak/issues)
+* [Homepage](https://github.com/rubymem/bundler-leak#readme)
+* [Issues](https://github.com/rubymem/bundler-leak/issues)
 * [Documentation](http://rubydoc.info/gems/bundler-leak/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
-* [![Build Status](https://travis-ci.org/rubysec/bundler-leak.svg)](https://travis-ci.org/rubysec/bundler-leak)
-* [![Code Climate](https://codeclimate.com/github/rubysec/bundler-leak.svg)](https://codeclimate.com/github/rubysec/bundler-leak)
+* [![Build Status](https://travis-ci.org/rubymem/bundler-leak.svg?branch=master)](https://travis-ci.org/rubymem/bundler-leak)
+* [![Code Climate](https://codeclimate.com/github/rubymem/bundler-leak.svg)](https://codeclimate.com/github/rubymem/bundler-leak)
 
 ## Description
 
