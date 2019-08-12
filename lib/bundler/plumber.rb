@@ -15,5 +15,5 @@
 # along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'bundler/audit/database'
-require 'bundler/audit/version'
+require 'bundler/plumber/database'
+require 'bundler/plumber/version'

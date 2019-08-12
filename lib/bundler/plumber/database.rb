@@ -15,13 +15,13 @@
 # along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'bundler/audit/advisory'
+require 'bundler/plumber/advisory'
 
 require 'time'
 require 'yaml'
 
 module Bundler
-  module Audit
+  module Plumber
     #
     # Represents the directory of advisories, grouped by gem name
     # and CVE number.

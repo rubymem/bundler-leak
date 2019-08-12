@@ -1,7 +1,7 @@
 require 'rake/tasklib'
 
 module Bundler
-  module Audit
+  module Plumber
     class Task < Rake::TaskLib
       #
       # Initializes the task.
@@ -13,15 +13,15 @@ module Bundler
       protected
 
       #
-      # Defines the `bundle:audit` task.
+      # Defines the `bundle:leak` task.
       #
       def define
         namespace :bundle do
           desc 'Updates the ruby-mem-advisory-db then runs bundle-leak'
-          task :audit do
-            require 'bundler/audit/cli'
+          task :leak do
+            require 'bundler/plumber/cli'
             %w(update check).each do |command|
-              Bundler::Audit::CLI.start [command]
+              Bundler::Plumber::CLI.start [command]
             end
           end
         end

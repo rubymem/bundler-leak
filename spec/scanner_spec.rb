@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'bundler/audit/scanner'
+require 'bundler/plumber/scanner'
 
 describe Scanner do
   describe "#scan" do

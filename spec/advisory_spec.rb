@@ -1,14 +1,14 @@
 require 'spec_helper'
-require 'bundler/audit/database'
-require 'bundler/audit/advisory'
+require 'bundler/plumber/database'
+require 'bundler/plumber/advisory'
 
-describe Bundler::Audit::Advisory do
-  let(:root) { Bundler::Audit::Database::VENDORED_PATH }
+describe Bundler::Plumber::Advisory do
+  let(:root) { Bundler::Plumber::Database::VENDORED_PATH }
   let(:gem)  { 'therubyracer' }
   let(:id)   { '336' }
   let(:path) { File.join(root,'gems',gem,"#{id}.yml") }
   let(:an_unaffected_version) do
-    Bundler::Audit::Advisory.load(path).unaffected_versions.map { |version_rule|
+    Bundler::Plumber::Advisory.load(path).unaffected_versions.map { |version_rule|
       # For all the rules, get the individual constraints out and see if we
       # can find a suitable one...
       version_rule.requirements.select { |(constraint, gem_version)|
