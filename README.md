@@ -14,8 +14,6 @@ Patch-level verification for [bundler].
 ## Features
 
 * Checks for memory leaks of gems in `Gemfile.lock`.
-* Checks for insecure gem sources (`http://`).
-* Allows ignoring certain advisories that have been manually worked around.
 * Prints memory leak information.
 * Does not require a network connection.
 
@@ -70,8 +68,8 @@ Update the [ruby-mem-advisory-db] and check `Gemfile.lock` (useful for CI runs):
 Rake task:
 
 ```ruby
-require 'bundler/leak/task'
-Bundler::Leak::Task.new
+require 'bundler/plumber/task'
+Bundler::Plumber::Task.new
 
 task default: 'bundle:leak'
 ```
