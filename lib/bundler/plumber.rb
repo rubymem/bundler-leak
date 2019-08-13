@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2019 Ombulabs (hello at ombulabs.com)
 # Copyright (c) 2013-2016 Hal Brodigan (postmodern.mod3 at gmail.com)
 #
 # bundler-leak is free software: you can redistribute it and/or modify

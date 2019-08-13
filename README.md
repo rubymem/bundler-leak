@@ -3,7 +3,7 @@
 * [Homepage](https://github.com/rubymem/bundler-leak#readme)
 * [Issues](https://github.com/rubymem/bundler-leak/issues)
 * [Documentation](http://rubydoc.info/gems/bundler-leak/frames)
-* [Email](mailto:postmodern.mod3 at gmail.com)
+* [Email](mailto:hello at ombulabs.com)
 * [![Build Status](https://travis-ci.org/rubymem/bundler-leak.svg?branch=master)](https://travis-ci.org/rubymem/bundler-leak)
 * [![Code Climate](https://codeclimate.com/github/rubymem/bundler-leak.svg)](https://codeclimate.com/github/rubymem/bundler-leak)
 
@@ -93,6 +93,7 @@ task default: 'bundle:leak'
 
 ## License
 
+Copyright (c) 2019 Ombulabs (hello at ombulabs.com)
 Copyright (c) 2013-2016 Hal Brodigan (postmodern.mod3 at gmail.com)
 
 bundler-leak is free software: you can redistribute it and/or modify
