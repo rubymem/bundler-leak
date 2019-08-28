@@ -93,16 +93,15 @@ module Bundler
       # @note
       #   Requires network access.
       #
-      # @since 0.3.0
-      #
       def self.update!(options={})
         raise "Invalid option(s)" unless (options.keys - [:quiet]).empty?
         if File.directory?(USER_PATH)
           if File.directory?(File.join(USER_PATH, ".git"))
             Dir.chdir(USER_PATH) do
-              command = %w(git pull)
+              command = %w(git fetch --all)
+              command = %w(git reset --hard origin/master)
               command << '--quiet' if options[:quiet]
-              command << 'origin' << 'master'
+
               system *command
             end
           end
