@@ -1,3 +1,0 @@
-[submodule "data/ruby-mem-advisory-db"]
-	path = data/ruby-mem-advisory-db
-	url = https://github.com/rubymem/ruby-mem-advisory-db.git
