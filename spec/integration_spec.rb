@@ -31,23 +31,10 @@ Solution: remove or disable this gem until a patch is available!)+/
     end
   end
 
-  context "when auditing a secure bundle" do
-    let(:bundle)    { 'secure' }
-    let(:directory) { File.join('spec','bundle',bundle) }
-
-    subject do
-      Dir.chdir(directory) { sh(command) }
-    end
-
-    it "should print nothing when everything is fine" do
-      expect(subject.strip).to eq("No leaks found")
-    end
-  end
-
   describe "update" do
 
     let(:update_command) { "#{command} update" }
-    let(:bundle)         { 'secure' }
+    let(:bundle)         { 'unpatched_gems' }
     let(:directory)      { File.join('spec','bundle',bundle) }
 
     subject do

@@ -46,16 +46,4 @@ describe Scanner do
       end
     end
   end
-
-  context "when auditing a secure bundle" do
-    let(:bundle)    { 'secure' }
-    let(:directory) { File.join('spec','bundle',bundle) }
-    let(:scanner)   { described_class.new(directory)    }
-
-    subject { scanner.scan.to_a }
-
-    it "should print nothing when everything is fine" do
-      expect(subject).to be_empty
-    end
-  end
 end
