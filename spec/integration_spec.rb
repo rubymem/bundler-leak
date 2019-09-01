@@ -24,7 +24,7 @@ describe "CLI" do
 Version: \d+.\d+.\d+
 URL: https?:\/\/(www\.)?.+
 Title: [^\n]*?
-Solution: remove or disable this gem until a patch is available!)+/
+Solution: upgrade to (~>|>=) \d+\.\d+\.\d+(\.\d+)?(, (~>|>=) \d+\.\d+\.\d+(\.\d+)?)*[\s\n]*?)/
 
       expect(subject).to match(advisory_pattern)
       expect(subject).to include("Leaks found!")
