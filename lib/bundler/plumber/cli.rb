@@ -51,10 +51,10 @@ module Bundler
         end
 
         if vulnerable
-          say "Vulnerabilities found!", :red
+          say "Leaks found!", :red
           exit 1
         else
-          say("No vulnerabilities found", :green) unless options.quiet?
+          say("No leaks found", :green) unless options.quiet?
         end
       end
 
