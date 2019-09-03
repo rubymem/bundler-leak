@@ -16,7 +16,7 @@ describe "CLI" do
     end
 
     it "should print a warning" do
-      expect(subject).to include("Vulnerabilities found!")
+      expect(subject).to include("Leaks found!")
     end
 
     it "should print advisory information for the vulnerable gems" do
@@ -27,7 +27,7 @@ Title: [^\n]*?
 Solution: remove or disable this gem until a patch is available!)+/
 
       expect(subject).to match(advisory_pattern)
-      expect(subject).to include("Vulnerabilities found!")
+      expect(subject).to include("Leaks found!")
     end
   end
 
@@ -40,7 +40,7 @@ Solution: remove or disable this gem until a patch is available!)+/
     end
 
     it "should print nothing when everything is fine" do
-      expect(subject.strip).to eq("No vulnerabilities found")
+      expect(subject.strip).to eq("No leaks found")
     end
   end
 
