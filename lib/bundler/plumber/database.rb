@@ -72,8 +72,10 @@ module Bundler
           t1 = Dir.chdir(USER_PATH) { Time.parse(`git log --date=iso8601 --pretty="%cd" -1`) }
           t2 = VENDORED_TIMESTAMP
 
-          if t1 >= t2 then USER_PATH
-          else             VENDORED_PATH
+          if t1 >= t2
+            USER_PATH
+          else
+            VENDORED_PATH
           end
         else
           VENDORED_PATH

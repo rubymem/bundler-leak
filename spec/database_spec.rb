@@ -14,7 +14,8 @@ describe Bundler::Plumber::Database do
       expect(File.directory?(subject)).to be_truthy
     end
 
-    it "should prefer the user repo, iff it's as up to date, or more up to date than the vendored one" do
+    it "should prefer the user repo, if it's as up to date, or more up to date than the vendored one" do
+
       Bundler::Plumber::Database.update!(quiet: false)
 
       Dir.chdir(Bundler::Plumber::Database::USER_PATH) do
@@ -29,7 +30,7 @@ describe Bundler::Plumber::Database do
       fake_a_commit_in_the_user_repo
       expect(Bundler::Plumber::Database.path).to eq mocked_user_path
 
-      roll_user_repo_back(20)
+      roll_user_repo_back(2)
       expect(Bundler::Plumber::Database.path).to eq Bundler::Plumber::Database::VENDORED_PATH
     end
   end
