@@ -9,7 +9,7 @@
 
 ## Description
 
-The best tool to find leaky gems in your dependencies. Make sure your memory leaks
+The best tool to find leaky gems in your dependencies. Make sure memory leaks
 are not in your gem dependencies.
 
 ## Features
