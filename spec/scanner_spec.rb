@@ -32,7 +32,7 @@ describe Scanner do
 
     it "should match unpatched gems to their advisories" do
       expect(subject.all? { |result|
-        result.advisory.vulnerable?(result.gem.version)
+        result.advisory.leaky?(result.gem.version)
       }).to be_truthy
     end
 

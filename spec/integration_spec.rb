@@ -19,7 +19,7 @@ describe "CLI" do
       expect(subject).to include("Leaks found!")
     end
 
-    it "should print advisory information for the vulnerable gems" do
+    it "should print advisory information for the leaky gems" do
       advisory_pattern = /(Name: [^\n]+
 Version: \d+.\d+.\d+
 URL: https?:\/\/(www\.)?.+
