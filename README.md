@@ -9,13 +9,14 @@
 
 ## Description
 
-Patch-level verification for [bundler].
+The best tool to find leaky gems in your dependencies. Make sure memory leaks
+are not in your gem dependencies.
 
 ## Features
 
-* Checks for memory leaks of gems in `Gemfile.lock`.
-* Prints memory leak information.
-* Does not require a network connection.
+* Checks for memory leaks of gems in `Gemfile.lock`
+* Prints memory leak information
+* Does not require a network connection
 
 ## Synopsis
 
@@ -93,7 +94,7 @@ task default: 'bundle:leak'
 
 ## License
 
-Copyright (c) 2019 Ombulabs (hello at ombulabs.com)
+Copyright (c) 2019 OmbuLabs (hello at ombulabs.com)
 
 Copyright (c) 2013-2016 Hal Brodigan (postmodern.mod3 at gmail.com)
 
