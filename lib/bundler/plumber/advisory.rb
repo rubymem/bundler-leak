@@ -100,15 +100,15 @@ module Bundler
       end
 
       #
-      # Checks whether the version is vulnerable to the advisory.
+      # Checks whether the version is leaky to the advisory.
       #
       # @param [Gem::Version] version
       #   The version to compare against {#patched_versions}.
       #
       # @return [Boolean]
-      #   Specifies whether the version is vulnerable to the advisory or not.
+      #   Specifies whether the version is leaky to the advisory or not.
       #
-      def vulnerable?(version)
+      def leaky?(version)
         !patched?(version) && !unaffected?(version)
       end
 

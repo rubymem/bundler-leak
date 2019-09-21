@@ -115,12 +115,12 @@ describe Bundler::Plumber::Advisory do
     end
   end
 
-  describe "#vulnerable?" do
+  describe "#leaky?" do
     context "when passed a version that matches one patched version" do
       let(:version) { Gem::Version.new('0.12.4') }
 
       it "should return false" do
-        expect(subject.vulnerable?(version)).to be_falsey
+        expect(subject.leaky?(version)).to be_falsey
       end
     end
 
@@ -128,7 +128,7 @@ describe Bundler::Plumber::Advisory do
       let(:version) { Gem::Version.new('2.9.0') }
 
       it "should return true" do
-        expect(subject.vulnerable?(version)).to be_truthy
+        expect(subject.leaky?(version)).to be_truthy
       end
 
       context "when unaffected_versions is not empty" do
@@ -138,7 +138,7 @@ describe Bundler::Plumber::Advisory do
           let(:version) { Gem::Version.new(an_unaffected_version) }
 
           it "should return false" do
-            expect(subject.vulnerable?(version)).to be_falsey
+            expect(subject.leaky?(version)).to be_falsey
           end
         end
 
@@ -146,7 +146,7 @@ describe Bundler::Plumber::Advisory do
           let(:version) { Gem::Version.new('1.2.3') }
 
           it "should return true" do
-            expect(subject.vulnerable?(version)).to be_truthy
+            expect(subject.leaky?(version)).to be_truthy
           end
         end
       end

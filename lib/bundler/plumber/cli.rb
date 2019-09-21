@@ -39,10 +39,10 @@ module Bundler
         update if options[:update]
 
         scanner    = Scanner.new
-        vulnerable = false
+        leaky = false
 
         scanner.scan do |result|
-          vulnerable = true
+          leaky = true
 
           case result
           when Scanner::UnpatchedGem
@@ -50,7 +50,7 @@ module Bundler
           end
         end
 
-        if vulnerable
+        if leaky
           say "Leaks found!", :red
           exit 1
         else

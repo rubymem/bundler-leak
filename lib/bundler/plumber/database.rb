@@ -178,7 +178,7 @@ module Bundler
         return enum_for(__method__,gem) unless block_given?
 
         advisories_for(gem.name) do |advisory|
-          if advisory.vulnerable?(gem.version)
+          if advisory.leaky?(gem.version)
             yield advisory
           end
         end
