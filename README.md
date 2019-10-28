@@ -88,7 +88,7 @@ task default: 'bundle:leak'
 ## Contributing
 
 1. Clone the repo
-1. `git submodule update --init` # To populate data dir.
+1. `./bin/setup` # To populate data dir.
 1. `bundle exec rake`
 
 ## License
