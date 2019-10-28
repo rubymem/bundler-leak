@@ -32,7 +32,7 @@ module Helpers
   def expect_update_to_update_repo!
     expect(Bundler::Plumber::Database).
       to receive(:system).
-      with('git', 'reset', '--hard', 'origin/master').
+      with("git fetch --all; git reset --hard origin/master").
       and_call_original
   end
 
