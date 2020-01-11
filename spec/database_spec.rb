@@ -55,11 +55,11 @@ describe Bundler::Plumber::Database do
 
     context "when the :quiet option is true" do
       it "should create the repo, then update it given multiple successive calls." do
-        expect_update_to_clone_repo!
+        expect_update_to_clone_repo!(quiet: true)
         Bundler::Plumber::Database.update!(quiet: true)
         expect(File.directory?(mocked_user_path)).to be true
 
-        expect_update_to_update_repo!
+        expect_update_to_update_repo!(quiet: true)
         Bundler::Plumber::Database.update!(quiet: true)
         expect(File.directory?(mocked_user_path)).to be true
       end

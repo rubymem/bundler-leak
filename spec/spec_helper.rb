@@ -22,17 +22,24 @@ module Helpers
     File.expand_path('../../tmp/ruby-mem-advisory-db', __FILE__)
   end
 
-  def expect_update_to_clone_repo!
+  def expect_update_to_clone_repo!(quiet: false)
+    with = ['git', 'clone']
+    with << '--quiet' if quiet
+    with << Bundler::Plumber::Database::VENDORED_PATH << mocked_user_path
+
     expect(Bundler::Plumber::Database).
       to receive(:system).
-      with('git', 'clone', Bundler::Plumber::Database::VENDORED_PATH, mocked_user_path).
+      with(*with).
       and_call_original
   end
 
-  def expect_update_to_update_repo!
+  def expect_update_to_update_repo!(quiet: false)
+    with = 'git fetch --all; git reset --hard origin/master'
+    with << " --quiet" if quiet
+
     expect(Bundler::Plumber::Database).
       to receive(:system).
-      with("git fetch --all; git reset --hard origin/master").
+      with(with).
       and_call_original
   end
 
