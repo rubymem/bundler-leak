@@ -41,14 +41,28 @@ describe Bundler::Plumber::Database do
       expect(File.directory?(mocked_user_path)).to be true
     end
 
-    it "should create the repo, then update it given multple successive calls." do
-      expect_update_to_clone_repo!
-      Bundler::Plumber::Database.update!(quiet: false)
-      expect(File.directory?(mocked_user_path)).to be true
+    context "when the :quiet option is false" do
+      it "should create the repo, then update it given multiple successive calls." do
+        expect_update_to_clone_repo!
+        Bundler::Plumber::Database.update!(quiet: false)
+        expect(File.directory?(mocked_user_path)).to be true
 
-      expect_update_to_update_repo!
-      Bundler::Plumber::Database.update!(quiet: false)
-      expect(File.directory?(mocked_user_path)).to be true
+        expect_update_to_update_repo!
+        Bundler::Plumber::Database.update!(quiet: false)
+        expect(File.directory?(mocked_user_path)).to be true
+      end
+    end
+
+    context "when the :quiet option is true" do
+      it "should create the repo, then update it given multiple successive calls." do
+        expect_update_to_clone_repo!
+        Bundler::Plumber::Database.update!(quiet: true)
+        expect(File.directory?(mocked_user_path)).to be true
+
+        expect_update_to_update_repo!
+        Bundler::Plumber::Database.update!(quiet: true)
+        expect(File.directory?(mocked_user_path)).to be true
+      end
     end
   end
 
