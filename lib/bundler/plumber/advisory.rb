@@ -20,14 +20,17 @@ require 'yaml'
 
 module Bundler
   module Plumber
-    class Advisory < Struct.new(:path,
-                                :id,
-                                :url,
-                                :title,
-                                :date,
-                                :description,
-                                :unaffected_versions,
-                                :patched_versions)
+    class Advisory < Struct.new(
+      :gem,
+      :path,
+      :id,
+      :url,
+      :title,
+      :date,
+      :description,
+      :unaffected_versions,
+      :patched_versions
+    )
 
       #
       # Loads the advisory from a YAML file.
@@ -54,6 +57,7 @@ module Bundler
         }
 
         return new(
+          data['gem'],
           path,
           id,
           data['url'],
