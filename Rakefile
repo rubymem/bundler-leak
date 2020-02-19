@@ -42,7 +42,7 @@ namespace :spec do
 
     %w[unpatched_gems].each do |bundle|
       chdir(File.join(root,bundle)) do
-        sh 'unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPT && bundle install --path ../../../vendor/bundle'
+        sh "unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPT && bundle config set --local path '../../../vendor/bundle' && bundle install"
       end
     end
   end
