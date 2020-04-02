@@ -37,12 +37,12 @@ describe Scanner do
     end
 
     context "when the :ignore option is given" do
-      subject { scanner.scan(:ignore => ['OSVDB-89026']) }
+      subject { scanner.scan(:ignore => ['celluloid-670']) }
 
-      it "should ignore the specified advisories" do
+      it "should ignore the specified leaky gems" do
         ids = subject.map { |result| result.advisory.id }
 
-        expect(ids).not_to include('OSVDB-89026')
+        expect(ids).not_to include('670')
       end
     end
   end

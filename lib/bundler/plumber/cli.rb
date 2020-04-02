@@ -33,6 +33,7 @@ module Bundler
       desc 'check', 'Checks the Gemfile.lock for known memory leaks'
       method_option :quiet, :type => :boolean, :aliases => '-q'
       method_option :verbose, :type => :boolean, :aliases => '-v'
+      method_option :ignore, :type => :array, :aliases => '-i'
       method_option :update, :type => :boolean, :aliases => '-u'
 
       def check
@@ -41,7 +42,7 @@ module Bundler
         scanner    = Scanner.new
         leaky = false
 
-        scanner.scan do |result|
+        scanner.scan(ignore: options.ignore) do |result|
           leaky = true
 
           case result

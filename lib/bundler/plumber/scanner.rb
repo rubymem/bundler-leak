@@ -80,9 +80,6 @@ module Bundler
       def scan(options={},&block)
         return enum_for(__method__, options) unless block
 
-        ignore = Set[]
-        ignore += options[:ignore] if options[:ignore]
-
         scan_specs(options, &block)
 
         return self
@@ -118,12 +115,8 @@ module Bundler
 
         @lockfile.specs.each do |gem|
           @database.check_gem(gem) do |advisory|
-
-            # TODO this logic should be modified for rubymem
-            #unless (ignore.include?(advisory.cve_id) || ignore.include?(advisory.osvdb_id))
-            #  yield UnpatchedGem.new(gem,advisory)
-            #end
-            yield UnpatchedGem.new(gem, advisory)
+            gem_and_id = "#{advisory.gem}-#{advisory.id}"
+            yield UnpatchedGem.new(gem,advisory) unless ignore.include?(gem_and_id)
           end
         end
       end
