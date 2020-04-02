@@ -7,7 +7,7 @@ require 'bundler/plumber/database'
 
 module Helpers
   def sh(command, options={})
-    Bundler.with_clean_env do
+    with_unbundled_env do
       result = `#{command} 2>&1`
       raise "FAILED #{command}\n#{result}" if $?.success? == !!options[:fail]
       result
@@ -52,6 +52,17 @@ module Helpers
   def roll_user_repo_back(num_commits)
     Dir.chdir(mocked_user_path) do
       system 'git', 'reset', '--hard', "HEAD~#{num_commits}"
+    end
+  end
+
+  private
+
+  def with_unbundled_env
+    bundler_ver = Gem::Version.new(Bundler::VERSION)
+    if bundler_ver < Gem::Version.new('2.1.0')
+      Bundler.with_clean_env { yield }
+    else
+      Bundler.with_unbundled_env { yield }
     end
   end
 end
