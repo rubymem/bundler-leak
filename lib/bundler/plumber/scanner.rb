@@ -116,9 +116,7 @@ module Bundler
         @lockfile.specs.each do |gem|
           @database.check_gem(gem) do |advisory|
             gem_and_id = "#{advisory.gem}-#{advisory.id}"
-            unless ignore.include?(gem_and_id)
-              yield UnpatchedGem.new(gem,advisory)
-            end
+            yield UnpatchedGem.new(gem,advisory) unless ignore.include?(gem_and_id)
           end
         end
       end
