@@ -116,3 +116,7 @@ along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 [bundler]: https://github.com/carlhuda/bundler#readme
 
 [ruby-mem-advisory-db]: https://github.com/rubymem/ruby-mem-advisory-db
+
+## FastRuby.io
+![fastruby](https://github.com/rubymem/bundler-leak/raw/master/fastruby-logo.png)¬
+`bundler-leak` is maintained and funded by FastRuby.io, inc. The names and logos for FastRuby.io are trademarks of FastRuby.io, inc.
