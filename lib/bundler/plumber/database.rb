@@ -100,7 +100,7 @@ module Bundler
         if File.directory?(USER_PATH)
           if File.directory?(File.join(USER_PATH, ".git"))
             Dir.chdir(USER_PATH) do
-              command = "git fetch --all; git reset --hard origin/master"
+              command = "git fetch --all; git reset --hard origin/main"
               command << ' --quiet' if options[:quiet]
 
               system *command
