@@ -34,7 +34,7 @@ module Helpers
   end
 
   def expect_update_to_update_repo!(quiet: false)
-    with = 'git fetch --all; git reset --hard origin/master'
+    with = 'git fetch --all; git reset --hard origin/main'
     with << " --quiet" if quiet
 
     expect(Bundler::Plumber::Database).

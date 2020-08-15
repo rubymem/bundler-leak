@@ -20,7 +20,7 @@ namespace :db do
     timestamp = nil
 
     chdir 'data/ruby-mem-advisory-db' do
-      sh 'git', 'pull', 'origin', 'master'
+      sh 'git', 'pull', 'origin', 'main'
 
       File.open('../ruby-mem-advisory-db.ts','w') do |file|
         file.write Time.parse(`git log --pretty="%cd" -1`).utc

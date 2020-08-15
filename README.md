@@ -4,7 +4,7 @@
 * [Issues](https://github.com/rubymem/bundler-leak/issues)
 * [Documentation](http://rubydoc.info/gems/bundler-leak/frames)
 * [Email](mailto:oss at ombulabs.com)
-* [![Build Status](https://travis-ci.org/rubymem/bundler-leak.svg?branch=master)](https://travis-ci.org/rubymem/bundler-leak)
+* [![Build Status](https://travis-ci.org/rubymem/bundler-leak.svg?branch=main)](https://travis-ci.org/rubymem/bundler-leak)
 * [![Code Climate](https://codeclimate.com/github/rubymem/bundler-leak.svg)](https://codeclimate.com/github/rubymem/bundler-leak)
 
 ## Description
@@ -45,15 +45,15 @@ Update the [ruby-mem-advisory-db] that `bundle leak` uses:
     $ bundle leak update
 
     cd data/ruby-mem-advisory-db
-    git pull origin master
+    git pull origin main
     remote: Enumerating objects: 14, done.
     remote: Counting objects: 100% (14/14), done.
     remote: Compressing objects: 100% (4/4), done.
     remote: Total 9 (delta 5), reused 7 (delta 4), pack-reused 0
     Unpacking objects: 100% (9/9), done.
     From github.com:rubymem/ruby-mem-advisory-db
-     * branch            master     -> FETCH_HEAD
-       3254525..c4fc78e  master     -> origin/master
+     * branch            main     -> FETCH_HEAD
+       3254525..c4fc78e  main     -> origin/main
     Updating 3254525..c4fc78e
     Fast-forward
      README.md                 | 68 ++++++++++++++++++++------------------------------------------------
@@ -118,6 +118,6 @@ along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 [ruby-mem-advisory-db]: https://github.com/rubymem/ruby-mem-advisory-db
 
 ## FastRuby.io
-![fastruby](https://github.com/rubymem/bundler-leak/raw/master/fastruby-logo.png)
+![fastruby](https://github.com/rubymem/bundler-leak/raw/main/fastruby-logo.png)
 
 `bundler-leak` is maintained and funded by FastRuby.io, inc. The names and logos for FastRuby.io are trademarks of FastRuby.io, inc.
