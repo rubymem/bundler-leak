@@ -117,6 +117,10 @@ along with bundler-leak.  If not, see <http://www.gnu.org/licenses/>.
 
 [ruby-mem-advisory-db]: https://github.com/rubymem/ruby-mem-advisory-db
 
+## Code of Conduct
+
+Everyone interacting in the bundler-leak project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rubymem/bundler-leak/code-of-conduct.md).
+
 ## FastRuby.io
 ![fastruby](https://github.com/rubymem/bundler-leak/raw/main/fastruby-logo.png)
 
