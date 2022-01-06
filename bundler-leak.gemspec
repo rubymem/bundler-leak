@@ -33,8 +33,9 @@ Gem::Specification.new do |gem|
     end
   end
 
+  gem.bindir = "exe"
   gem.executables = gemspec.fetch('executables') do
-    glob['bin/*'].map { |path| File.basename(path) }
+    glob['exe/*'].map { |path| File.basename(path) }
   end
   gem.default_executable = gem.executables.first if Gem::VERSION < '1.7.'
 
