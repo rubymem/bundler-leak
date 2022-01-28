@@ -17,7 +17,7 @@ assignees: ''
 
 **Branch/Commit:**
 
-Inform what branch/commit/version of Skunk.fyi you are using.
+Inform what branch/commit/version of bundler-leak you are using.
 
 **Describe the feature:**
 
