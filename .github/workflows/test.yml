@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        ruby: ['2.6', '2.7', '3.0', '3.1', head, jruby, jruby-head, truffleruby, truffleruby-head]
+        os: [ubuntu-latest]
+        ruby: ['2.6', '2.7', '3.0', '3.1']
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
@@ -25,7 +25,8 @@ jobs:
     - name: Bundle
       run: |
         gem install bundler
+        bundle update --bundler
         bundle install
     - name: Run tests
       run: |
-        bundle exec rake
+        rake
