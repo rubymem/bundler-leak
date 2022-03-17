@@ -5,6 +5,6 @@ doc/
 .yardoc/
 coverage/
 pkg/
-spec/bundle/*/.bundle/
+spec/bundle/unpatched_gems/.bundle/
 vendor/bundle/
 tmp/
