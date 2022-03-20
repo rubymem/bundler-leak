@@ -5,8 +5,7 @@ describe Bundler::Plumber::CLI do
   describe "#update" do
     context "not --quiet (the default)" do
       context "when update succeeds" do
-
-        before { expect(Bundler::Plumber::Database).to receive(:update!).and_return(true) }
+        before { allow(Bundler::Plumber::Database).to receive(:update!).and_return(true) }
 
         it "prints updated message" do
           expect { subject.update }.to output(/Updated ruby-mem-advisory-db/).to_stdout
@@ -23,7 +22,7 @@ describe Bundler::Plumber::CLI do
 
       context "when update fails" do
 
-        before { expect(Bundler::Plumber::Database).to receive(:update!).and_return(false) }
+        before { allow(Bundler::Plumber::Database).to receive(:update!).and_return(false) }
 
         it "prints failure message" do
           expect do
@@ -49,14 +48,14 @@ describe Bundler::Plumber::CLI do
     end
 
     context "--quiet" do
-      before do
-        allow(subject).to receive(:options).and_return(double("Options", quiet?: true))
+      subject do
+        Bundler::Plumber::CLI.new([], quiet: true)
       end
 
       context "when update succeeds" do
 
         before do
-          expect(Bundler::Plumber::Database).to(
+          allow(Bundler::Plumber::Database).to(
             receive(:update!).with(quiet: true).and_return(true)
           )
         end
@@ -67,9 +66,8 @@ describe Bundler::Plumber::CLI do
       end
 
       context "when update fails" do
-
         before do
-          expect(Bundler::Plumber::Database).to(
+          allow(Bundler::Plumber::Database).to(
             receive(:update!).with(quiet: true).and_return(false)
           )
         end
