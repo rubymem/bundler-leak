@@ -73,12 +73,11 @@ describe Bundler::Plumber::CLI do
         end
 
         it "prints failure message" do
-          expect do
-            begin
-              subject.update
-            rescue SystemExit
-            end
-          end.to output(/Failed updating ruby-mem-advisory-db!/).to_stdout
+          expect(Bundler::Plumber::CLI).to(
+            receive(:say).with("Failed updating ruby-mem-advisory-db!", :red)
+          )
+
+          subject.update
         end
 
         it "exits with error status code" do
