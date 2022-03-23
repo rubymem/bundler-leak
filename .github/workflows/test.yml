@@ -32,4 +32,4 @@ jobs:
         bundle install
     - name: Run tests
       run: |
-        bundle exec rake
+        bundle exec rspec spec
