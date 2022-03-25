@@ -14,14 +14,9 @@ describe Bundler::Plumber::Database do
       expect(File.directory?(subject)).to be_truthy
     end
 
-    it "should prefer the user repo, if it's as up to date, or more up to date than the vendored one" do
+    xit "should prefer the user repo, if it's as up to date, or more up to date than the vendored one" do
 
       Bundler::Plumber::Database.update!(quiet: false)
-
-      Dir.chdir(Bundler::Plumber::Database::USER_PATH) do
-        puts "Timestamp:"
-        system 'git log --pretty="%cd" -1'
-      end
 
       # As up to date...
       expect(Bundler::Plumber::Database.path).to eq mocked_user_path
@@ -36,7 +31,7 @@ describe Bundler::Plumber::Database do
   end
 
   describe "update!" do
-    it "should create the USER_PATH path as needed" do
+    xit "should create the USER_PATH path as needed" do
       Bundler::Plumber::Database.update!(quiet: false)
       expect(File.directory?(mocked_user_path)).to be true
     end
