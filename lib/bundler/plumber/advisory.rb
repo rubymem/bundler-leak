@@ -70,7 +70,7 @@ module Bundler
       end
 
       def self.load_advisory_from_yaml(path)
-        return YAML.unsafe_load(File.read(path)) if YAML.respond_to?(:unsafe_load)
+        return YAML.load_file(path, permitted_classes: [Date]) if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('4')
 
         YAML.load_file(path)
       end
