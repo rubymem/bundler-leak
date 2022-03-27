@@ -9,7 +9,7 @@ group :development do
   gem 'rubygems-tasks', '~> 0.2'
   gem 'rspec',          '~> 3.0'
   gem 'yard',           '~> 0.9'
-  gem 'simplecov',      '~> 0.7', :require => false
+  gem 'simplecov',      '~> 0.21.2', :require => false
 end
 
 gem "byebug", "~> 11.0", :groups => [:development, :test]

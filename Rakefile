@@ -36,19 +36,6 @@ end
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 
-namespace :spec do
-  task :bundle do
-    root = 'spec/bundle'
-
-    %w[unpatched_gems].each do |bundle|
-      chdir(File.join(root,bundle)) do
-        sh "unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPT && bundle config set --local path '../../../vendor/bundle' && bundle install"
-      end
-    end
-  end
-end
-task :spec => 'spec:bundle'
-
 task :test    => :spec
 task :default => :spec
 

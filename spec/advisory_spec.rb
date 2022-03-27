@@ -27,7 +27,7 @@ describe Bundler::Plumber::Advisory do
   subject { described_class.load(path) }
 
   describe "load" do
-    let(:data) { YAML.load_file(path) }
+    let(:data) { YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(File.read(path)) : YAML.load_file(path) }
 
     describe '#id' do
       subject { super().id }

@@ -44,7 +44,7 @@ module Bundler
       #
       def self.load(path)
         id   = File.basename(path).chomp('.yml')
-        data = YAML.load_file(path)
+        data = load_advisory_from_yaml(path)
 
         unless data.kind_of?(Hash)
           raise("advisory data in #{path.dump} was not a Hash")
@@ -67,6 +67,12 @@ module Bundler
           parse_versions[data['unaffected_versions']],
           parse_versions[data['patched_versions']]
         )
+      end
+
+      def self.load_advisory_from_yaml(path)
+        return YAML.load_file(path, permitted_classes: [Date]) if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('4')
+
+        YAML.load_file(path)
       end
 
       #

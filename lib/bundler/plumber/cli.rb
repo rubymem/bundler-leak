@@ -76,7 +76,7 @@ module Bundler
         end
 
         unless options.quiet?
-          puts("ruby-mem-advisory-db: #{Database.new.size} advisories")
+          say("ruby-mem-advisory-db: #{Database.new.size} advisories", :green)
         end
       end
 
