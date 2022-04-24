@@ -4,7 +4,7 @@
 * [Issues](https://github.com/rubymem/bundler-leak/issues)
 * [Documentation](http://rubydoc.info/gems/bundler-leak/frames)
 * [Email](mailto:oss at ombulabs.com)
-* [![Build Status](https://travis-ci.org/rubymem/bundler-leak.svg?branch=main)](https://travis-ci.org/rubymem/bundler-leak)
+* [![CI](https://github.com/rubymem/bundler-leak/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/rubymem/bundler-leak/actions/workflows/test.yml)
 * [![Code Climate](https://codeclimate.com/github/rubymem/bundler-leak.svg)](https://codeclimate.com/github/rubymem/bundler-leak)
 
 ## Description
